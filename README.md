@@ -1,7 +1,7 @@
 # Travel Log
 This repository contains template application (backend & frontend) for "Travel log" test assignment.
 
-## Prepare database (PostgreSQL 10.3)
+## Prepare database (PostgreSQL 12.0)
 
 ```
 docker run --name travel-log-postgres -e POSTGRES_PASSWORD=thisispassword -p 5432:5432 -d postgres:12.0
