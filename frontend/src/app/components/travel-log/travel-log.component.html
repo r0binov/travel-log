@@ -1,0 +1,124 @@
+<h1 style="text-align: center">Travel Logs</h1>
+<div class="table-container"
+     style="border: 1px solid black;
+            border-radius: 5px"
+     *ngIf="isTableVisible"
+>
+  <table class="table table-striped">
+    <thead>
+    <tr style="text-align: center">
+      <th scope="col">ID</th>
+      <th scope="col">Info</th>
+      <th scope="col">Date</th>
+      <th scope="col">Reg Number</th>
+      <th scope="col">Owner Name</th>
+      <th scope="col">Start Odometer</th>
+      <th scope="col">End Odometer</th>
+      <th scope="col">Route</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let log of travelLogs">
+      <td>{{ log.id }}</td>
+      <td>{{ log.description }}</td>
+      <td>{{ log.date }}</td>
+      <td>{{ log.regNumber }}</td>
+      <td>{{ log.ownerName }}</td>
+      <td>{{ log.startOdometer }}</td>
+      <td>{{ log.endOdometer }}</td>
+      <td>{{ log.route }}</td>
+      <td style="display: flex; justify-content: space-around">
+        <button type="button" class="btn btn-primary" (click)="editLog(log)">
+          Edit
+        </button>
+        <button type="button" class="btn btn-danger" (click)="deleteTravelLog(log)">
+          Delete
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="div-container" *ngIf="!isTableVisible">
+  <div class="div-content" *ngFor="let log of travelLogs">
+    <p>
+      <b> Date: </b> {{ log.date }}
+    </p>
+    <p>
+      <b> Description: </b> {{ log.description }}
+    </p>
+    <p>
+      <b>Registration Number: </b> {{ log.regNumber }}
+    </p>
+    <p>
+      <b>Owner Name: </b> {{ log.ownerName }}
+    </p>
+    <p>
+      <b>Start Odometer: </b> {{ log.startOdometer }}
+    </p>
+    <p>
+      <b>End Odometer: </b> {{ log.endOdometer }}
+    </p>
+    <p>
+      <b>Route: </b> {{ log.route }}
+    </p>
+    <button type="button" class="btn btn-primary" (click)="editLog(log); onEditClickScrollToElement()">
+      Edit
+    </button>
+    <button type="button" class="btn btn-danger" (click)="deleteTravelLog(log)">
+      Delete
+    </button>
+  </div>
+</div>
+<form #reportForm="ngForm"
+      *ngIf="expandRow"
+>
+  <label>Description</label>
+  <input type="text" [(ngModel)]="newTravelLog.description" name="description" placeholder="Description" required/>
+  <label>Date</label>
+  <input type="date" [(ngModel)]="newTravelLog.date" name="date" placeholder="Date" required/>
+  <label>Reg number</label>
+  <input type="text" [(ngModel)]="newTravelLog.regNumber" name="regNumber" placeholder="Reg Number" required/>
+  <label>Owner name</label>
+  <input type="text" [(ngModel)]="newTravelLog.ownerName" name="ownerName" placeholder="Owner Name" required/>
+  <label>Start odometer</label>
+  <input type="number" [(ngModel)]="newTravelLog.startOdometer" name="startOdometer" placeholder="Start Odometer"
+         required/>
+  <label>End odometer</label>
+  <input type="text" [(ngModel)]="newTravelLog.endOdometer" name="endOdometer" placeholder="End Odometer"/>
+  <label>Route</label>
+  <input type="text" [(ngModel)]="newTravelLog.route" name="route" placeholder="Route" required/>
+  <div style="padding-top: 10px">
+    <button type="button" class="btn btn-success" [disabled]="!reportForm.form.valid" (click)="createTravelLog()">Send</button>
+    <button type="button" class="btn btn-danger" (click)="cancelCreateTravelLog()">Cancel</button>
+  </div>
+</form>
+<form *ngIf="selectedLog"
+      #reportForm="ngForm"
+      #scrollToElement
+>
+  <label>Description</label>
+  <input [(ngModel)]="selectedLog.description" name="description" placeholder="Description" required/>
+  <label>Date</label>
+  <input type="date" [(ngModel)]="selectedLog.date" name="date" placeholder="Date" required/>
+  <label>Reg number</label>
+  <input [(ngModel)]="selectedLog.regNumber" name="regNumber" placeholder="Registration Number" required/>
+  <label>Owner name</label>
+  <input [(ngModel)]="selectedLog.ownerName" name="ownerName" placeholder="Owner Name" required/>
+  <label>Start odometer</label>
+  <input [(ngModel)]="selectedLog.startOdometer" name="startOdometer" placeholder="Start Odometer" required/>
+  <label>End odometer</label>
+  <input [(ngModel)]="selectedLog.endOdometer" name="endOdometer" placeholder="End Odometer" required/>
+  <label>Route</label>
+  <input [(ngModel)]="selectedLog.route" name="route" placeholder="Route" required/>
+  <div style="padding-top: 10px;">
+    <button type="submit" class="btn btn-success" [disabled]="!reportForm.form.valid" (click)="saveEditedLog()">Save</button>
+    <button type="submit" class="btn btn-danger" (click)="cancelEditedLog()">Cancel</button>
+  </div>
+</form>
+<div style="text-align: center; margin-top: 10px" *ngIf="!expandRow">
+  <button type="button" class="btn btn-info" (click)="expandRow = true">Add Travel Log</button>
+</div>
+
+

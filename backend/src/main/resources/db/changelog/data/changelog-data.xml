@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+
+    <changeSet id="1" author="Xi Jinping">
+        <insert tableName="travel_log">
+            <column name="id" value="1"/>
+            <column name="date" value="2022-01-01"/>
+            <column name="reg_number" value="ABC 123"/>
+            <column name="owner_name" value="Xi Jinping"/>
+            <column name="start_odometer" value="1000"/>
+            <column name="end_odometer" value="1200"/>
+            <column name="route" value="Tallinn-Tartu"/>
+            <column name="description" value="Ärireis"/>
+        </insert>
+    </changeSet>
+    <changeSet id="2" author="Xi Jinping">
+        <insert tableName="travel_log">
+            <column name="id" value="2"/>
+            <column name="date" value="2022-01-13"/>
+            <column name="reg_number" value="ABC 123"/>
+            <column name="owner_name" value="Xi Jinping"/>
+            <column name="start_odometer" value="1200"/>
+            <column name="end_odometer" value="1400"/>
+            <column name="route" value="Tartu-Tallinn"/>
+            <column name="description" value="Tagasi koju"/>
+        </insert>
+    </changeSet>
+    <changeSet id="3" author="John Cena">
+        <insert tableName="travel_log">
+            <column name="id" value="3"/>
+            <column name="date" value="2022-02-01"/>
+            <column name="reg_number" value="CBD 420"/>
+            <column name="owner_name" value="John Cena"/>
+            <column name="start_odometer" value="103600"/>
+            <column name="end_odometer" value="103700"/>
+            <column name="route" value="Tallinn-Pärnu"/>
+            <column name="description" value="Business trip"/>
+        </insert>
+    </changeSet>
+    <changeSet id="4" author="John Cena">
+        <insert tableName="travel_log">
+            <column name="id" value="4"/>
+            <column name="date" value="2022-02-02"/>
+            <column name="reg_number" value="CBD 420"/>
+            <column name="owner_name" value="John Cena"/>
+            <column name="start_odometer" value="103700"/>
+            <column name="end_odometer" value="103800"/>
+            <column name="route" value="Pärnu-Tallinn"/>
+            <column name="description" value="Business trip"/>
+        </insert>
+    </changeSet>
+    <changeSet id="5" author="Andrew Tate">
+        <insert tableName="travel_log">
+            <column name="id" value="5"/>
+            <column name="date" value="2022-03-16"/>
+            <column name="reg_number" value="CBD 420"/>
+            <column name="owner_name" value="Urmas Sõõrumaa"/>
+            <column name="start_odometer" value="1000"/>
+            <column name="end_odometer" value="10000"/>
+            <column name="route" value="Tallinn-Mumbai"/>
+            <column name="description" value="Suusareis"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

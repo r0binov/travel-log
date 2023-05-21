@@ -1,3 +1,27 @@
 micronaut:
   application:
     name: travellog
+  datasources:
+      default:
+        url: jdbc:postgresql://localhost:5432/postgres
+        driverClassName: org.postgresql.Driver
+        username: postgres
+        password: thisispassword
+  server:
+    cors:
+      enabled: true
+      mappings:
+        - path: /api/**
+          allowedOrigins:
+            - http://localhost:4200
+          allowedMethods:
+            - GET
+            - POST
+            - PUT
+            - DELETE
+          allowedHeaders:
+            - Content-Type
+            - Authorization
+liquibase:
+  enabled: true
+  change-log: classpath:db/changelog/changelog.xml

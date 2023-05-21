@@ -1,0 +1,47 @@
+<form #reportForm="ngForm" novalidate>
+    <h1>Generate a report</h1>
+    <label for="startDate">Start Date:</label>
+    <input type="date" id="startDate" [(ngModel)]="startDate" name="startDate" required>
+    <label for="endDate">End Date:</label>
+    <input type="date" id="endDate" [(ngModel)]="endDate" name="endDate" required>
+    <label for="regNumber">Registration Number:</label>
+    <select id="regNumber" [(ngModel)]="regNumber" name="regNumber" required>
+      <option *ngFor="let regNumber of regNumbers" [value]="regNumber">{{ regNumber }}</option>
+    </select>
+    <label for="ownerName">Owner Name:</label>
+    <select id="ownerName" [(ngModel)]="ownerName" name="ownerName" required>
+      <option *ngFor="let ownerName of ownerNames" [value]="ownerName">{{ ownerName }}</option>
+    </select>
+
+  <div style="text-align: center; padding-top: 10px; padding-bottom: 10px">
+    <button type="button" class="btn btn-info" [disabled]="!reportForm.form.valid" (click)="generateReport()">Generate
+      Report
+    </button>
+  </div>
+</form>
+<div *ngIf="report">
+  <h2>Travel Log Report</h2>
+  <div class="div-content">
+    <div *ngFor="let log of getLogModels()">
+      <h4>
+        <b> Date: </b> {{ log.date }}
+      </h4>
+      <p>
+        <b> Description: </b> {{ log.description }}
+      </p>
+      <p>
+        <b> Start Odometer: </b> {{ log.startOdometer }}
+      </p>
+      <p>
+        <b>End Odometer: </b> {{ log.endOdometer }}
+      </p>
+      <p>
+        <b> Route: </b> {{ log.route }}
+      </p>
+    </div>
+    <h3>
+      <b> Total Distance: </b> {{ report.totalDistance }} km
+    </h3>
+  </div>
+</div>
+
