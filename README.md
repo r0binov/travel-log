@@ -16,8 +16,14 @@ If for some reason you have to re-initialize Postgres container from the scratch
 ## Running the backend application
 
 From backend project root execute the following command:
+If you are on mac or using bash
 ```
 ./gradlew run
+```
+
+If you are on windows and using powershell or CLI
+```
+.\gradlew run
 ```
 After that navigate to `http://localhost:8080/api/travel-logs` in your browser
 to verify that backend application is running.
