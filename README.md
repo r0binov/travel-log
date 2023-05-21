@@ -16,6 +16,7 @@ If for some reason you have to re-initialize Postgres container from the scratch
 ## Running the backend application
 
 From backend project root execute the following command:
+
 If you are on mac or using bash
 ```
 ./gradlew run
